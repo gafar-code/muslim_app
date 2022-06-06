@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
 
-import 'package:muslim_app/app/modules/compas/bindings/compas_binding.dart';
-import 'package:muslim_app/app/modules/compas/views/compas_view.dart';
+import 'package:muslim_app/app/modules/compass/bindings/compass_binding.dart';
+import 'package:muslim_app/app/modules/compass/views/compass_view.dart';
 import 'package:muslim_app/app/modules/dasboard/bindings/dasboard_binding.dart';
 import 'package:muslim_app/app/modules/dasboard/views/dasboard_view.dart';
+import 'package:muslim_app/app/modules/home/bindings/home_binding.dart';
+import 'package:muslim_app/app/modules/home/views/home_view.dart';
+import 'package:muslim_app/app/modules/quran/bindings/quran_binding.dart';
+import 'package:muslim_app/app/modules/quran/views/quran_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -21,9 +25,19 @@ class AppPages {
       binding: DasboardBinding(),
     ),
     GetPage(
-      name: _Paths.COMPAS,
-      page: () => CompasView(),
-      binding: CompasBinding(),
+      name: _Paths.HOME,
+      page: () => HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.COMPASS,
+      page: () => CompassView(),
+      binding: CompassBinding(),
+    ),
+    GetPage(
+      name: _Paths.QURAN,
+      page: () => QuranView(),
+      binding: QuranBinding(),
     ),
   ];
 }

@@ -16,4 +16,7 @@ final yellowColor = Color(0xFFFFB800);
 final lightTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w300);
 final regularTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w400);
 final mediumTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w500);
-final boldTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w600);
+final semiBoldTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w600);
+final boldTextStyle = GoogleFonts.poppins(fontWeight: FontWeight.w700);
+
+final defaultPadding = 20.0;

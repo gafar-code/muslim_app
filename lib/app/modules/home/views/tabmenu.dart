@@ -46,9 +46,14 @@ class TabMenuWidget extends GetView<HomeController> {
       margin: EdgeInsets.only(right: 10),
       padding: EdgeInsets.symmetric(horizontal: 14),
       decoration: BoxDecoration(
-        color: isSelected ? cyanColor : whiteColor,
-        borderRadius: BorderRadius.circular(30),
-      ),
+          color: isSelected ? cyanColor : whiteColor,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 4,
+                offset: Offset(0, 4),
+                color: isSelected ? cyanColor.withOpacity(0.25) : whiteColor)
+          ]),
       height: 36,
       child: Center(
           child: Row(

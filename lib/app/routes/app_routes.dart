@@ -8,11 +8,13 @@ abstract class Routes {
 
   static const HOME = _Paths.HOME;
   static const DASBOARD = _Paths.DASBOARD;
-  static const COMPAS = _Paths.COMPAS;
+  static const COMPASS = _Paths.COMPASS;
+  static const QURAN = _Paths.QURAN;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const DASBOARD = '/dasboard';
-  static const COMPAS = '/compas';
+  static const COMPASS = '/compass';
+  static const QURAN = '/quran';
 }
