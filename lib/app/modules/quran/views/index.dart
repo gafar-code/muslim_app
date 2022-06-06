@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muslim_app/app/modules/quran/controllers/quran_controller.dart';
+import 'package:muslim_app/models/surah.dart';
 import 'package:muslim_app/theme.dart';
 
-import 'detail/detail_view.dart';
+// import 'detail/detail_view.dart';
 
 class IndexWidget extends GetView<QuranController> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.fromLTRB(20, 380, 20, 80),
-      children: [
-        _indexSurah(context),
-        _indexSurah(context),
-        _indexSurah(context),
-        _indexSurah(context),
-        _indexSurah(context),
-        _indexSurah(context),
-        _indexSurah(context),
-      ],
-    );
+    Get.find<QuranController>();
+    return FutureBuilder<List<Surah>>(
+        future: controller.getSurah(),
+        builder: ((context, snapshot) {
+          if (snapshot.hasData) {
+            List<Surah> data = snapshot.data!;
+            return ListView.builder(
+                physics: BouncingScrollPhysics(),
+                padding: EdgeInsets.fromLTRB(20, 380, 20, 80),
+                itemCount: data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _indexSurah(context, data[index]);
+                });
+          }
+          return Center(child: CircularProgressIndicator());
+        }));
   }
 
-  Widget _indexSurah(BuildContext context) {
+  Widget _indexSurah(BuildContext context, Surah surah) {
     return GestureDetector(
-      onTap: () => Get.to(DetailView()),
+      onTap: controller.getSurah,
       child: Column(
         children: [
           Container(
@@ -34,10 +39,10 @@ class IndexWidget extends GetView<QuranController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                    backgroundColor: grey2Color,
+                    backgroundColor: blackColor,
                     child: Center(
                         child: Text(
-                      '1',
+                      "${surah.number}",
                       style: regularTextStyle.copyWith(fontSize: 9),
                     )),
                     radius: 12),
@@ -46,11 +51,11 @@ class IndexWidget extends GetView<QuranController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Al-Fatihah',
+                    Text(surah.name.transliteration.id,
                         style: mediumTextStyle.copyWith(
-                            color: grey2Color, fontSize: 16)),
+                            color: blackColor, fontSize: 16)),
                     Text(
-                      'Pembukaan',
+                      surah.name.translation.id,
                       style: regularTextStyle.copyWith(fontSize: 9),
                     ),
                   ],
@@ -59,11 +64,11 @@ class IndexWidget extends GetView<QuranController> {
                 SizedBox(
                   width: 100,
                   child: Text(
-                    'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ',
+                    surah.name.long,
                     textAlign: TextAlign.right,
                     maxLines: 2,
                     style: mediumTextStyle.copyWith(
-                        fontSize: 14, color: grey2Color),
+                        fontSize: 14, color: blackColor),
                   ),
                 ),
               ],
