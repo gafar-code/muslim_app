@@ -18,6 +18,7 @@ class ContentWidget extends GetView<HomeController> {
             if (snapshot.hasData) {
               List<Post> data = snapshot.data!;
               return ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.only(top: 20, bottom: 60),
                   controller: c,
                   itemCount: data.length,
