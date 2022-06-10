@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:muslim_app/API/api.dart';
-import 'package:muslim_app/models/post.dart';
+import 'package:muslim_app/api/api.dart';
+import 'package:muslim_app/app/models/post.dart';
 
 class HomeController extends GetxController {
   RxBool panelOpen = false.obs;
@@ -32,5 +32,11 @@ class HomeController extends GetxController {
     } else {
       return <Post>[];
     }
+  }
+
+  @override
+  void onInit() {
+    update();
+    super.onInit();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:muslim_app/app/modules/compass/views/compass_view.dart';
+import 'package:muslim_app/app/modules/time/views/time_view.dart';
 import 'package:muslim_app/app/modules/home/views/home_view.dart';
 import 'package:muslim_app/app/modules/quran/views/quran_view.dart';
 
@@ -19,7 +19,7 @@ class DasboardView extends GetView<DasboardController> {
             index: controller.currentIndex.value,
             children: [
               HomeView(),
-              CompassView(),
+              TimeView(),
               QuranView(),
               Center(child: Text("Profle Page")),
             ],

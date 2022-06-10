@@ -5,12 +5,12 @@ import 'package:get/get.dart';
 import 'package:muslim_app/app/modules/home/views/hightlight.dart';
 import 'package:muslim_app/app/modules/home/views/search.dart';
 import 'package:muslim_app/app/modules/home/views/tabmenu.dart';
-import 'package:muslim_app/app/modules/home/views/content.dart';
 import 'package:muslim_app/theme.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../controllers/home_controller.dart';
 import 'header.dart';
+import 'news/news_views.dart';
 import 'patern.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -73,7 +73,7 @@ class HomeView extends GetView<HomeController> {
                             )
                           : Center(),
                       TabMenuWidget(),
-                      ContentWidget(c)
+                      NewsWidget(c)
                     ],
                   ),
                 );

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import 'package:muslim_app/app/modules/compass/bindings/compass_binding.dart';
-import 'package:muslim_app/app/modules/compass/views/compass_view.dart';
+import 'package:muslim_app/app/modules/time/bindings/compass_binding.dart';
+import 'package:muslim_app/app/modules/time/views/time_view.dart';
 import 'package:muslim_app/app/modules/dasboard/bindings/dasboard_binding.dart';
 import 'package:muslim_app/app/modules/dasboard/views/dasboard_view.dart';
 import 'package:muslim_app/app/modules/home/bindings/home_binding.dart';
@@ -31,8 +31,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COMPASS,
-      page: () => CompassView(),
-      binding: CompassBinding(),
+      page: () => TimeView(),
+      binding: TimeBinding(),
     ),
     GetPage(
       name: _Paths.QURAN,

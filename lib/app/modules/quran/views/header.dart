@@ -11,7 +11,7 @@ class HeaderWidget extends GetView<QuranController> {
     return Column(
       children: [
         Container(
-          height: 246,
+          height: 240,
           width: size.width,
           padding: EdgeInsets.fromLTRB(20, 60, 20, 20),
           decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class HeaderWidget extends GetView<QuranController> {
                       style: mediumTextStyle.copyWith(fontSize: 18)),
                   Spacer(),
                   SvgPicture.asset(
-                    'assets/icons/notification.svg',
+                    'assets/icons/search.svg',
                     color: blackColor,
                   ),
                   SizedBox(width: 18),
@@ -85,8 +85,8 @@ class HeaderWidget extends GetView<QuranController> {
           ),
         ),
         Container(
-          height: 54,
-          margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
+          height: 64,
+          margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
           padding: EdgeInsets.symmetric(horizontal: 10),
           width: size.width,
           decoration: BoxDecoration(

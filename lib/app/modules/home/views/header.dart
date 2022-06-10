@@ -36,16 +36,13 @@ class HeaderWidget extends GetView<HomeController> {
           Spacer(),
           SvgPicture.asset('assets/icons/notification_active.svg'),
           SizedBox(width: 20),
-          GestureDetector(
-            onTap: controller.getPosts, // debug
-            child: Container(
-              padding: EdgeInsets.all(2),
-              decoration:
-                  BoxDecoration(color: whiteColor, shape: BoxShape.circle),
-              child: CircleAvatar(
-                radius: 28,
-                child: Image.asset('assets/images/profile.png'),
-              ),
+          Container(
+            padding: EdgeInsets.all(2),
+            decoration:
+                BoxDecoration(color: whiteColor, shape: BoxShape.circle),
+            child: CircleAvatar(
+              radius: 28,
+              child: Image.asset('assets/images/profile.png'),
             ),
           )
         ],
