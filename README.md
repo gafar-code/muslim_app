@@ -12,6 +12,11 @@ cd kosan_app
 flutter pub get
 flutter run
 ```
+## API
+- Berita Indonesia : https://api-berita-indonesia.vercel.app/cnbc/syariah
+- Surah Alquran : https://equran.id/api/surat
+- Audio Murottal : https://www.everyayah.com/data/Alafasy_128kbps
+
 ## Pengetahuan
 
  - [Flutter](https://flutter.dev)
