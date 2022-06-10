@@ -8,7 +8,7 @@
 ## Instalasi
 ```ruby
 git clone http://github.com/gafar-code/muslim_app
-cd kosan_app
+cd muslim_app
 flutter pub get
 flutter run
 ```
