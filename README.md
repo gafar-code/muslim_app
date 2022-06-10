@@ -12,6 +12,8 @@ cd kosan_app
 flutter pub get
 flutter run
 ```
+## Demo Aplikasi
+- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/demo/app-release.signed.apk)
 ## API
 - Berita Indonesia : https://api-berita-indonesia.vercel.app/cnbc/syariah
 - Surah Alquran : https://equran.id/api/surat
