@@ -24,4 +24,3 @@ flutter run
  - [Flutter](https://flutter.dev)
  - [Getx State Management](https://https://pub.dev/packages/get)
  - [Dart](https://dart.dev/)
-
