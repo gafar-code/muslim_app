@@ -1,14 +1,15 @@
 import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:muslim_app/API/api.dart';
-import 'package:muslim_app/app/models/ayat.dart';
-import 'package:muslim_app/app/models/surah.dart';
+
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:just_audio/just_audio.dart';
+import 'package:muslim_app/API/api.dart';
 import 'package:muslim_app/app/models/audiometa.dart';
 import 'package:muslim_app/app/models/audioposition.dart';
+import 'package:muslim_app/app/models/ayat.dart';
+import 'package:muslim_app/app/models/surah.dart';
 import 'package:rxdart/rxdart.dart' as r;
 
 class QuranController extends GetxController {
@@ -47,16 +48,21 @@ class QuranController extends GetxController {
   Future<List<AudioSource>> playlist(Surah surah) async {
     List<AudioSource> listOfAudioSource = [];
     String numberOfSurah = surah.nomor.toString().padLeft(3, '0');
-    for (int i = 0; i < surah.jumlahAyat + 1; i++) {
-      String numberOfAyat = i.toString().padLeft(3, '0');
+    int count = 1;
+    int lenghtOfAyat = surah.jumlahAyat;
+    // if (surah.nomor == 1) {
+    //   count = 1;
+    // }
+    for (count; count < lenghtOfAyat + 1;) {
+      String numberOfAyat = count.toString().padLeft(3, '0');
+      String url = "$ayatAudio/$numberOfSurah$numberOfAyat.mp3";
       listOfAudioSource.add(AudioSource.uri(
           tag: AudioMetadata(
             album: surah.namaLatin,
             title: surah.arti,
           ),
-          Uri.parse(
-            "$ayatAudio/$numberOfSurah$numberOfAyat.mp3",
-          )));
+          Uri.parse(url)));
+      count++;
     }
     return listOfAudioSource;
   }
@@ -69,12 +75,12 @@ class QuranController extends GetxController {
     try {
       await player.setAudioSource(
           ConcatenatingAudioSource(
-              useLazyPreparation: true,
+              useLazyPreparation: false,
               shuffleOrder: DefaultShuffleOrder(),
               children: await playlist(surah)),
           preload: kIsWeb || defaultTargetPlatform != TargetPlatform.linux);
     } catch (e) {
-      Get.snackbar('Error', '$e');
+      print(e);
     }
   }
 
