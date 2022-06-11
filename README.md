@@ -1,16 +1,26 @@
-# muslim_app
 
-A new Flutter project.
+# MUSLIM APP
+- slicing design dari figma ke flutter,
+- consume API
+- state-management menggunakan Getx
+- WebView
 
-## Getting Started
+## Instalasi
+```ruby
+git clone http://github.com/gafar-code/muslim_app
+cd muslim_app
+flutter pub get
+flutter run
+```
+## Demo Aplikasi
+- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/demo/app-release.signed.apk)
+## API
+- Berita Indonesia : https://api-berita-indonesia.vercel.app/cnbc/syariah
+- Surah Alquran : https://equran.id/api/surat
+- Audio Murottal : https://www.everyayah.com/data/Alafasy_128kbps
 
-This project is a starting point for a Flutter application.
+## Pengetahuan
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - [Flutter](https://flutter.dev)
+ - [Getx State Management](https://https://pub.dev/packages/get)
+ - [Dart](https://dart.dev/)
