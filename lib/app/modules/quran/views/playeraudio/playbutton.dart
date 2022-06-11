@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:muslim_app/theme.dart';
 
 class PlayButton extends StatelessWidget {
   final AudioPlayer player;
@@ -25,7 +27,10 @@ class PlayButton extends StatelessWidget {
               margin: const EdgeInsets.all(8.0),
               width: 40,
               height: 40,
-              child: const CircularProgressIndicator(),
+              child: SpinKitThreeBounce(
+                size: 20,
+                color: whiteColor,
+              ),
             );
           } else if (playing != true) {
             return GestureDetector(

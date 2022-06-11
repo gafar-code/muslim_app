@@ -23,6 +23,7 @@ dependencies:
   just_audio: 0.9.24
   music_visualizer: 1.0.2
   draggable_fab: 0.1.4
+  flutter_spinkit: 5.1.0
   flutter: 
     sdk: flutter
 
