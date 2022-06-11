@@ -13,7 +13,7 @@ flutter pub get
 flutter run
 ```
 ## Demo Aplikasi
-- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/demo/app-release.signed.apk)
+- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/beta_v1/app-release.apk)
 ## API
 - Berita Indonesia : https://api-berita-indonesia.vercel.app/cnbc/syariah
 - Surah Alquran : https://equran.id/api/surat
