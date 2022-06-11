@@ -28,60 +28,63 @@ class IndexWidget extends GetView<QuranController> {
   }
 
   Widget _indexSurah(BuildContext context, Surah surah) {
-    return GestureDetector(
-      onTap: () => Get.to(DetailView(), arguments: surah),
-      child: Column(
-        children: [
-          Container(
-            height: 44,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                    backgroundColor: blackColor,
-                    child: Center(
-                        child: Text(
-                      "${surah.nomor}",
-                      style: regularTextStyle.copyWith(fontSize: 9),
-                    )),
-                    radius: 12),
-                SizedBox(width: 14),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(surah.namaLatin,
-                        style: mediumTextStyle.copyWith(
-                            color: blackColor, fontSize: 16)),
-                    Text(
-                      surah.arti,
-                      style: regularTextStyle.copyWith(fontSize: 9),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                SizedBox(
-                  width: 100,
-                  child: Text(
-                    surah.nama,
-                    textAlign: TextAlign.right,
-                    maxLines: 2,
-                    style: mediumTextStyle.copyWith(
-                        fontSize: 14, color: blackColor),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => Get.to(DetailView(), arguments: surah),
+        child: Column(
+          children: [
+            Container(
+              height: 44,
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                      backgroundColor: blackColor,
+                      child: Center(
+                          child: Text(
+                        "${surah.nomor}",
+                        style: regularTextStyle.copyWith(fontSize: 9),
+                      )),
+                      radius: 12),
+                  SizedBox(width: 14),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(surah.namaLatin,
+                          style: mediumTextStyle.copyWith(
+                              color: blackColor, fontSize: 16)),
+                      Text(
+                        surah.arti,
+                        style: regularTextStyle.copyWith(fontSize: 9),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  Spacer(),
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      surah.nama,
+                      textAlign: TextAlign.right,
+                      maxLines: 2,
+                      style: mediumTextStyle.copyWith(
+                          fontSize: 14, color: blackColor),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 0.5,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(vertical: 16),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), color: grey2Color),
-          )
-        ],
+            Container(
+              height: 0.5,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(vertical: 16),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8), color: grey2Color),
+            )
+          ],
+        ),
       ),
     );
   }
