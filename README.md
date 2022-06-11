@@ -13,11 +13,15 @@ flutter pub get
 flutter run
 ```
 ## Demo Aplikasi
-- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/demo/app-release.signed.apk)
+- [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/beta_v1/app-release.apk)
+- 
 ## API
-- Berita Indonesia : https://api-berita-indonesia.vercel.app/cnbc/syariah
-- Surah Alquran : https://equran.id/api/surat
-- Audio Murottal : https://www.everyayah.com/data/Alafasy_128kbps
+```ruby
+String urlNews= "https://api-berita-indonesia.vercel.app/cnbc/syariah";
+String urlSurah= "https://equran.id/api/surat";
+String ayatAudio= "https://www.everyayah.com/data/Alafasy_128kbps";
+String urlKalender= "https://kalenderindonesia.com/api/APIopVn7mpMsX/kalender/masehi";
+```
 
 ## Pengetahuan
 

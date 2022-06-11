@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:muslim_app/app/models/surah.dart';
 import 'package:muslim_app/app/modules/quran/controllers/quran_controller.dart';
+import 'package:muslim_app/app/modules/quran/views/paper/paper_view.dart';
 import 'package:muslim_app/theme.dart';
 
 class HeaderWidget extends GetView<QuranController> {
-  final String title;
-  HeaderWidget(this.title);
+  final Surah surah;
+  HeaderWidget(this.surah);
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -23,11 +25,12 @@ class HeaderWidget extends GetView<QuranController> {
               onPressed: Get.back, icon: Icon(CupertinoIcons.arrow_left)),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(title, style: regularTextStyle.copyWith(fontSize: 18)),
+            child: Text(surah.namaLatin,
+                style: regularTextStyle.copyWith(fontSize: 18)),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset('assets/icons/more_quran.svg'),
+          IconButton(
+            onPressed: () => Get.to(PaperView(surah)),
+            icon: SvgPicture.asset('assets/icons/more_quran.svg'),
           ),
         ],
       ),

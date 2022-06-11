@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:muslim_app/app/modules/time/views/calender.dart';
 import 'package:muslim_app/app/modules/time/views/header.dart';
@@ -32,7 +31,7 @@ class TimeView extends GetView<TimeController> {
             SlidingUpPanel(
               defaultPanelState: PanelState.CLOSED,
               maxHeight: size.height - 310,
-              minHeight: 280,
+              minHeight: 180,
               boxShadow: [],
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),

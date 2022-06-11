@@ -26,7 +26,7 @@ class DetailView extends GetView<QuranController> {
         children: [
           Column(
             children: [
-              HeaderWidget(surah.namaLatin),
+              HeaderWidget(surah),
               Expanded(
                 child: StreamBuilder<SequenceState?>(
                   stream: controller.player.sequenceStateStream,

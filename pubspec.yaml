@@ -24,6 +24,8 @@ dependencies:
   music_visualizer: 1.0.2
   draggable_fab: 0.1.4
   flutter_spinkit: 5.1.0
+  arabic_numbers: 1.0.0
+  table_calendar: 3.0.6
   flutter: 
     sdk: flutter
 
@@ -34,6 +36,10 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  fonts: 
+    - family: MeQuran
+      fonts: 
+        - asset: fonts/me_quran.ttf
   assets: 
     - assets/images/
     - assets/icons/

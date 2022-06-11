@@ -14,6 +14,13 @@ import 'package:rxdart/rxdart.dart' as r;
 
 class QuranController extends GetxController {
   final player = AudioPlayer();
+  late Ayat ayat;
+
+  void chooseAyat(Ayat value) {
+    ayat = value;
+    update();
+    print(ayat);
+  }
 
   Stream<AudioPositionData> get positionDataStream =>
       r.Rx.combineLatest3<Duration, Duration, Duration?, AudioPositionData>(
@@ -22,6 +29,16 @@ class QuranController extends GetxController {
           player.durationStream,
           (position, bufferedPosition, duration) => AudioPositionData(
               position, bufferedPosition, duration ?? Duration.zero));
+
+  String getFullAyat(Ayat ayat) {
+    String fullAyat = '';
+    int ayatLength = ayat.jumlahAyat;
+    for (int i = 0; i < ayatLength; i++) {
+      "$fullAyat${ayat.nomor}${ayat.ayat[i]}";
+    }
+    print(fullAyat);
+    return fullAyat;
+  }
 
   Future<List<Surah>> getIndexSurah() async {
     var result = await http.get(Uri.parse(urlSurah));
@@ -50,9 +67,6 @@ class QuranController extends GetxController {
     String numberOfSurah = surah.nomor.toString().padLeft(3, '0');
     int count = 1;
     int lenghtOfAyat = surah.jumlahAyat;
-    // if (surah.nomor == 1) {
-    //   count = 1;
-    // }
     for (count; count < lenghtOfAyat + 1;) {
       String numberOfAyat = count.toString().padLeft(3, '0');
       String url = "$ayatAudio/$numberOfSurah$numberOfAyat.mp3";

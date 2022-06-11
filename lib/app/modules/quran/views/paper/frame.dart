@@ -10,7 +10,7 @@ class FrameWidget extends GetView<QuranController> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: SizedBox(
-        height: size.height - 200,
+        height: size.height - 160, // di ubah
         width: size.width,
         child: Stack(
           children: [

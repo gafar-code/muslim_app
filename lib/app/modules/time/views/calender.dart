@@ -1,89 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:muslim_app/app/models/calender.dart';
 import 'package:muslim_app/app/modules/time/controllers/time_controller.dart';
 import 'package:muslim_app/theme.dart';
 
 class CalenderWidget extends GetView<TimeController> {
   @override
   Widget build(BuildContext context) {
+    int dateNow = DateTime.now().day;
     int currentYear = DateTime.now().year;
     int currentMonth = DateTime.now().month;
-    int daysInMonth = DateUtils.getDaysInMonth(currentYear, currentMonth);
     Get.find<TimeController>();
 
-    return Column(
-      children: [
-        SizedBox(height: 20),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: defaultPadding),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SvgPicture.asset('assets/icons/calender_left.svg'),
-              Text(
-                'April 2022',
-                style: semiBoldTextStyle.copyWith(fontSize: 18),
-              ),
-              SvgPicture.asset('assets/icons/calender_right.svg'),
-            ],
-          ),
-        ),
-        SizedBox(height: 40),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _calender(number: 13, day: 'Senin'),
-              _calender(number: 14, day: 'Selasa'),
-              _calender(number: 15, day: 'Rabu'),
-              _calender(number: 16, day: 'Kamis'),
-              _calender(number: 17, day: 'Jumat'),
-              _calender(number: 18, day: 'Sabtu'),
-              _calender(number: 19, day: 'Minggu', isCurrentTime: true),
-            ],
-          ),
-        ),
-        SizedBox(height: 20),
-        Container(
-            height: 400,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: whiteColor,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              itemCount: daysInMonth,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),
-              itemBuilder: (context, index) {
-                return _calenderDetail(
-                    index + 1,
-                    controller.daysName(
-                        DateTime(currentYear, currentMonth, index - 1)
-                            .weekday));
-              },
-            ))
-      ],
-    );
+    return Container(
+        height: 500,
+        width: MediaQuery.of(context).size.width,
+        child: FutureBuilder<CalenderModel>(
+            future:
+                controller.getCalender(year: currentYear, month: currentMonth),
+            builder: ((context, snapshot) {
+              CalenderModel? data = snapshot.data;
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset('assets/icons/calender_left.svg'),
+                          Text(
+                            "${controller.monthName[data!.month - 1]} ${data.year}",
+                            style: semiBoldTextStyle.copyWith(fontSize: 18),
+                          ),
+                          SvgPicture.asset('assets/icons/calender_right.svg'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: List.generate(7, (index) {
+                            int number =
+                                controller.weeksDay(data, dateNow)[index];
+                            String day = data.monthly.daily[number].text.w;
+
+                            return _calender(
+                                number: number,
+                                day: day,
+                                isCurrentTime: number == dateNow);
+                          })),
+                    ),
+                    SizedBox(height: 20),
+                    Expanded(
+                      child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        itemCount: data.monthly.daily.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 7),
+                        itemBuilder: (context, index) {
+                          String name = data.monthly.daily[index].text.w;
+                          String date = data.monthly.daily[index].day.m;
+                          bool isHolyday =
+                              data.monthly.daily[index].text.w == 'Ahad';
+                          return _calenderDetail(
+                              name: name, date: date, isHolyday: isHolyday);
+                        },
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return CircularProgressIndicator();
+            })));
   }
 
-  Center _calenderDetail(int date, String name) {
+  Center _calenderDetail(
+      {required String date, required String name, required bool isHolyday}) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            borderRadius: BorderRadius.circular(3),
             color: whiteColor,
-            border: Border.all(color: whiteColor)),
-        height: 38,
-        width: 38,
+            border: Border.all(color: greyColor)),
+        height: 60,
+        width: 60,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(name, style: regularTextStyle.copyWith(fontSize: 9)),
-            Text('$date', style: mediumTextStyle.copyWith(fontSize: 12)),
+            Text(name,
+                style: regularTextStyle.copyWith(
+                    fontSize: 9, color: isHolyday ? redColor : blackColor)),
+            Text(date,
+                style: mediumTextStyle.copyWith(
+                    fontSize: 12, color: isHolyday ? redColor : blackColor)),
           ],
         ),
       ),
@@ -91,7 +106,7 @@ class CalenderWidget extends GetView<TimeController> {
   }
 
   Center _calender(
-      {bool isCurrentTime = false, required int number, required String day}) {
+      {required bool isCurrentTime, required int number, required String day}) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
