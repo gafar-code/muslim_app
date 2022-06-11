@@ -7,14 +7,14 @@
 
 ## Instalasi
 ```ruby
-git clone http://github.com/gafar-code/muslim_app
+git clone 'http://github.com/gafar-code/muslim_app'
 cd muslim_app
 flutter pub get
 flutter run
 ```
 ## Demo Aplikasi
 - [Unduh Aplikasi](https://github.com/gafar-code/muslim_app/releases/download/beta_v1/app-release.apk)
-- 
+  
 ## API
 ```ruby
 String urlNews= "https://api-berita-indonesia.vercel.app/cnbc/syariah";
